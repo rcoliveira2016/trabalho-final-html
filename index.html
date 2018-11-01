@@ -10,7 +10,7 @@
 
   <title>Dev Moustache </title>
 
-  <link rel="shortcut icon" href="media/big.ico" type="image/x-icon">
+  <link rel="shortcut icon" href="media/img/big.ico" type="image/x-icon">
   <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
   <link href="css/blog-post.css" rel="stylesheet">
   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.2/css/all.css" integrity="sha384-/rXc/GQVaYpyDdyxK+ecHPVYJSN9bmVFBvjA/9eOB+pb3F2w2N6fc5qB9Ew5yIns" crossorigin="anonymous">
@@ -22,7 +22,7 @@
   <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
     <div class="container">      
       <a class="navbar-brand" href="#">
-        <img src="media/big.png">
+        <img src="media/img/big.png">
       </a>
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive"
         aria-expanded="false" aria-label="Toggle navigation">
@@ -39,7 +39,7 @@
             <a class="nav-link" data-target-page="sobre" href="#">Sobre</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#">Contato</a>
+            <a class="nav-link" data-target-page="contato" href="#">Contato</a>
           </li>
         </ul>
         <form class="form-inline my-2">
@@ -87,36 +87,38 @@
         return 'pages/' + element.data("target-page") + '.html'
       };
 
-      var _carregar = function () {
-        $(".conteudo").load('pages/home.html',function() {
-          _eventoClickPosts();
-          _eventoClickNavBar();
-        });
-                      
+      var _carregarConteudo = function (url){
+        $(".conteudo").load(url, _obterEventos);
+      }
+
+      var _iniciar = function () {
+        _carregarConteudo('pages/home.html');
       };
+
+      var _obterEventos = function (){
+        _eventoClickPosts();
+        _eventoClickNavBar();
+      }
       
       var _eventoClickNavBar = function () {
         $navBarResponsive.find("a.nav-link").on('click', function () {
           $navBarResponsive.find("li.nav-item.active").removeClass("active")
           $(this).parent().addClass("active");
-
           var url = _montarUrl($(this));
-
-          $(".conteudo").load(url);
+          _carregarConteudo(url);
         });        
       };
 
       var _eventoClickPosts = function () {
-        console.log($("a.post-link"));
-        $("a.post-link").on('click', function () {
-          console.log($posts);
-          var url = _montarUrl($(this));
 
-          $(".conteudo").load(url);
+        $("a.post-link").on('click', function () {
+          
+          var url = _montarUrl($(this));
+          _carregarConteudo(url);
         });        
       };
 
-      _carregar();
+      _iniciar();
     }
 
     new navegacao();
