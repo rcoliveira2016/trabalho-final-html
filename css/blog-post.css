@@ -45,7 +45,7 @@ body {
 
 a.navbar-brand img{
   width: 70px;
-  /*filter: contrast(200%);*/
+  filter: contrast(200%);
 }
 
 .header-title-post{
