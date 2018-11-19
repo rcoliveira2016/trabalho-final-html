@@ -39,7 +39,7 @@
             <a class="nav-link" data-target-page="sobre" href="#">Sobre</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" data-target-page="contato" href="#">Contato</a>
+            <a class="nav-link" data-target-page="contato" href="contato.php">Contato</a>
           </li>
         </ul>
         <form class="form-inline my-2">
@@ -78,51 +78,7 @@
 
   <script src="vendor/jquery/jquery.min.js"></script>
   <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-  <script>
-    var navegacao = function () {
-      var $navBarResponsive = $("#navbarResponsive");
-      var $posts = $(".posts");
-      
-      var _montarUrl = function (element) {
-        return 'pages/' + element.data("target-page") + '.html'
-      };
-
-      var _carregarConteudo = function (url){
-        $(".conteudo").load(url, _obterEventos);
-      }
-
-      var _iniciar = function () {
-        _carregarConteudo('pages/home.html');
-      };
-
-      var _obterEventos = function (){
-        _eventoClickPosts();
-        _eventoClickNavBar();
-      }
-      
-      var _eventoClickNavBar = function () {
-        $navBarResponsive.find("a.nav-link").on('click', function () {
-          $navBarResponsive.find("li.nav-item.active").removeClass("active")
-          $(this).parent().addClass("active");
-          var url = _montarUrl($(this));
-          _carregarConteudo(url);
-        });        
-      };
-
-      var _eventoClickPosts = function () {
-
-        $("a.post-link").on('click', function () {
-          
-          var url = _montarUrl($(this));
-          _carregarConteudo(url);
-        });        
-      };
-
-      _iniciar();
-    }
-
-    new navegacao();
-  </script>
+  <script src="js/app.js"></script>
 </body>
 
 </html>
