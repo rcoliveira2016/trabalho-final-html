@@ -49,8 +49,8 @@ class PostRepositorio {
             $p_sql->bindValue(":titulo", $post->getTitulo());
             $p_sql->bindValue(":descricao", $post->getDescricao());
             $p_sql->bindValue(":autor", $post->getAutor());
-            $p_sql->bindValue(":dataCriacao", $post->getDataCriacao());
-            $p_sql->bindValue(":conteudo", $post->getConteudol());
+            $p_sql->bindValue(":dataCriacao", $post->getData());
+            $p_sql->bindValue(":conteudo", $post->getConteudo());
             $p_sql->bindValue(":imagem", $post->getImagem());
   
   
