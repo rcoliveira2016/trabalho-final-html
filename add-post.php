@@ -5,7 +5,7 @@ include_once('./php/views/start-page.php');
 <h1 class="mt-4">Cadastrar post</h1>
 <hr>
 <div class="container mb-3 p-3 shadow-sm">
-    <form method="<?php echo $formMethod ?>"  >
+    <form enctype="multipart/form-data" method="<?php echo $formMethod ?>"  >
         <div class="form-group">
             <label for="titulo">Titulo</label>
             <input type="text" class="form-control" name="titulo" placeholder="Titulo">

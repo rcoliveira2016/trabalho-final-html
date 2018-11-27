@@ -7,7 +7,8 @@ $formMethod = 'POST';
  function Init(){
 	$method = $_SERVER['REQUEST_METHOD'];
 	switch ($method) {
-		case 'PUT':		 
+		case 'PUT':
+			Put();
 			break;
 		case 'POST':
 			Post();
@@ -25,15 +26,24 @@ $formMethod = 'POST';
 }
 
 
- function Get(){
+function Put(){
+	
+}
+
+
+function Get(){
 	
 }
 
  function Post(){
-	$_POST['data'] = date('Y-m-d H:i:s');
-	$_POST['id'] = 0;
-	var_dump($_POST);	
-	$post = popularPost($_POST);	
+	$resquest = $_POST;
+	$resquest['data'] = date('Y-m-d H:i:s');
+	$resquest['id'] = 0;
+	
+	move_uploaded_file($_FILES["imagem"]["tmp_name"], $_FILES["imagem"]["name"]);
+	$bin_string = file_get_contents($_FILES["imagem"]["name"]);	
+	$resquest['imagem'] = base64_encode($bin_string);
+	$post = popularPost($resquest);	
 	PostRepositorio::getInstance()->Inserir($post);
 }
 

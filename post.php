@@ -25,7 +25,7 @@ include_once('./php/views/start-page.php');
 <hr>
 
 <div class="row preview-image">
-    <img class="img-fluid rounded mx-auto d-block" src="media/img/posts/vue.png" alt="">
+    <img class="img-fluid rounded mx-auto d-block" src="data:image/png;base64,<?php echo $post->getImagem(); ?>" alt="">
 </div>
 
 <hr>
