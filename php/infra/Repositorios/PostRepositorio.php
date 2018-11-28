@@ -124,6 +124,24 @@ class PostRepositorio {
             print "Ocorreu um erro ao tentar executar esta ação, foi gerado um LOG do mesmo, tente novamente mais tarde. $e";
         }
     }
+	
+	public function BuscarPorPesquisa($pesquisa) {
+        try {
+            $sql = "SELECT * FROM $this->nameTable WHERE conteudo like '%$pesquisa%' or titulo like '%$pesquisa%' or descricao like '%$pesquisa%'";
+            $p_sql = Conexao::getInstance()->prepare($sql);
+            $p_sql->bindValue(":pesquisa", $pesquisa);
+            $p_sql->execute();
+            $lista = $p_sql->fetchAll(PDO::FETCH_ASSOC);
+            $f_lista = array();
+  
+            foreach ($lista as $l)
+                $f_lista[] = $this->populaPost($l);
+  
+            return $f_lista;
+        } catch (Exception $e) {
+            print "Ocorreu um erro ao tentar executar esta ação, foi gerado um LOG do mesmo, tente novamente mais tarde. $e";
+        }
+    }
 
     public function Deletar($id) {
         try {

@@ -3,7 +3,13 @@ include_once('./php/dom/post.php');
 include_once('./php/infra/Conexao.php');
 include_once('./php/infra/Repositorios/PostRepositorio.php');
 $postRepository = PostRepositorio::getInstance();
-$posts = $postRepository->BuscarTodos();
+if(isset($_POST['pesquisa'])){
+	$posts = $postRepository->BuscarPorPesquisa($_POST['pesquisa']);
+}
+else{
+	$posts = $postRepository->BuscarTodos();
+}
+
 //html
 include_once('./php/views/start-page.php'); 
 ?>

@@ -48,12 +48,12 @@ $bundles_javaScripts = array();
                     <a class="nav-link" data-target-page="contato" href="add-post.php">Criar Post</a>
                 </li>
             </ul>
-            <form class="form-inline my-2">
+            <form class="form-inline my-2" method="post" action="index.php">
                 <div class="input-group">
-                <input type="text" class="form-control no-border-radius" placeholder="Procurar" aria-label="Procurar"
+                <input type="text" name="pesquisa" class="form-control no-border-radius" placeholder="Procurar" aria-label="Procurar"
                     aria-describedby="basic-addon2">
                 <div class="input-group-append">
-                    <button class="btn btn-outline-secondary" name="envio" type="button">
+                    <button class="btn btn-outline-secondary" name="envio" type="submit">
                     <i class="fas fa-search"></i>
                     </button>
                 </div>
