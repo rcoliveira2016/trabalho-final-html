@@ -1,3 +1,7 @@
+<?php 
+global $bundles_javaScripts;
+$bundles_javaScripts = array();
+?> 
 <!DOCTYPE html>
 <html lang="pt-br">
 
@@ -39,6 +43,9 @@
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" data-target-page="contato" href="contato.php">Contato</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" data-target-page="contato" href="add-post.php">Criar Post</a>
                 </li>
             </ul>
             <form class="form-inline my-2">

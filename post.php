@@ -32,6 +32,15 @@ include_once('./php/views/start-page.php');
 <div class="container text-justify px-5">
     <?php echo $post->getConteudo();?>
     <hr>
+    <div class="bd-example">            
+        <a href="add-post.php?id=<?php echo $post->getId();?>" class="btn btn-primary">
+            <i class="fas fa-pencil-alt"></i>
+        </a>
+        <button type="sumit" data-id="<?php echo $post->getId();?>" id="deletar" class="btn btn-danger">
+            <i class="fas fa-trash-alt"></i>
+        </button>
+    </div>
+    <hr>
     <div class="card my-4">
     <h5 class="card-header">Escreva um Comentário:</h5>
     <div class="card-body">
@@ -45,7 +54,10 @@ include_once('./php/views/start-page.php');
         </form>
     </div>
 </div>
-</div>
             
             
-<?php include_once('./php/views/end-page.php') ?>
+<?php 
+$bundles_javaScripts[]='js/post.js';
+include_once('./php/views/end-page.php') 
+
+?>

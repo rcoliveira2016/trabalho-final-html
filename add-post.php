@@ -1,22 +1,25 @@
 <?php
 include_once('./php/controles/PostControle.php');
-include_once('./php/views/start-page.php'); 
+include_once('./php/views/start-page.php');
+$controle = new PostControle();
+$post = $controle->retorno;
 ?>
 <h1 class="mt-4">Cadastrar post</h1>
 <hr>
 <div class="container mb-3 p-3 shadow-sm">
-    <form enctype="multipart/form-data" method="<?php echo $formMethod ?>"  >
+    <form enctype="multipart/form-data" method="<?php echo $controle->formMethod ?>"  >
+        <input type="hidden" name="id" value="<?php echo $post->getId() ?>" name="titulo" placeholder="Titulo">
         <div class="form-group">
             <label for="titulo">Titulo</label>
-            <input type="text" class="form-control" name="titulo" placeholder="Titulo">
+            <input type="text" class="form-control" value="<?php echo $post->getTitulo() ?>" name="titulo" placeholder="Titulo">
         </div>
         <div class="form-group">
             <label for="descricao">Descrição</label>
-            <input type="descricao" class="form-control" id="descricao" name="descricao" placeholder="Descrição">
+            <input type="descricao" class="form-control" id="descricao" value="<?php echo $post->getDescricao() ?>"  name="descricao" placeholder="Descrição">
         </div>
 		<div class="form-group">
             <label for="autor">Autor</label>
-            <input type="autor" class="form-control" id="autor" name="autor"  placeholder="Autor">
+            <input type="autor" class="form-control" id="autor" value="<?php echo $post->getAutor() ?>" name="autor"  placeholder="Autor">
         </div>
 		<div class="form-group">
 			<label for="imagem">Imagem</label>
@@ -29,9 +32,15 @@ include_once('./php/views/start-page.php');
 		</div>
         <div class="form-group">
             <label for="conteudo">Conteudo</label>
-            <textarea class="form-control" id="conteudo" name="conteudo" rows="18"></textarea>
+            <textarea class="form-control" id="conteudo"  name="conteudo" rows="18"><?php echo $post->getConteudo() ?></textarea>
         </div>		
         <button type="submit" name="envio" class="btn btn-light border">Enter</button>
     </form>
 </div>
-<?php include_once('./php/views/end-page.php') ?>
+
+<?php 
+//$bundles_javaScripts[]='//cdn.ckeditor.com/4.11.1/basic/ckeditor.js';
+$bundles_javaScripts[]='./vendor/ckeditor/ckeditor.js';
+$bundles_javaScripts[]='./js/add-post.js';
+include_once('./php/views/end-page.php') 
+?>

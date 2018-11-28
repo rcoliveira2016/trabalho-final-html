@@ -27,6 +27,31 @@ class PostRepositorio {
         return $post;
     }
     
+    public function Editar(Post $post) {
+        try {
+            $sql = "UPDATE $this->nameTable set
+                    titulo = :titulo,
+                    descricao = :descricao,
+                    autor = :autor,
+                    conteudo = :conteudo,
+                    imagem = :imagem 
+                    WHERE id = :id";
+  
+            $p_sql = Conexao::getInstance()->prepare($sql);
+  
+            $p_sql->bindValue(":id", $post->getId());
+            $p_sql->bindValue(":titulo", $post->getTitulo());
+            $p_sql->bindValue(":descricao", $post->getDescricao());
+            $p_sql->bindValue(":autor", $post->getAutor());
+            $p_sql->bindValue(":conteudo", $post->getConteudo());
+            $p_sql->bindValue(":imagem", $post->getImagem());
+  
+            return $p_sql->execute();
+        } catch (Exception $e) {
+            print "Ocorreu um erro ao tentar executar esta ação, foi gerado um LOG do mesmo, tente novamente mais tarde.";
+        }
+    }
+
     public function Inserir(Post $post) {
         try {
             $sql = "INSERT INTO $this->nameTable (    
@@ -98,6 +123,18 @@ class PostRepositorio {
         } catch (Exception $e) {
             print "Ocorreu um erro ao tentar executar esta ação, foi gerado um LOG do mesmo, tente novamente mais tarde. $e";
         }
-    }    
+    }
+
+    public function Deletar($id) {
+        try {
+            $sql = "DELETE FROM $this->nameTable WHERE id = :id";
+            $p_sql = Conexao::getInstance()->prepare($sql);
+            $p_sql->bindValue(":id", $id);
+  
+            return $p_sql->execute();
+        } catch (Exception $e) {
+            print "Ocorreu um erro ao tentar executar esta ação, foi gerado um LOG do mesmo, tente novamente mais tarde.";
+        }
+    }
 }
 ?>

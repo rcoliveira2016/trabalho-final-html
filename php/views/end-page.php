@@ -12,6 +12,9 @@
     <script src="vendor/jquery/jquery.min.js"></script>
     <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
     <script src="js/app.js"></script>
+    <?php foreach($bundles_javaScripts as $key => $value): ?>
+        <script src="<?php echo $value; ?>"></script>
+    <?php endforeach; ?>
 </body>
 
 </html>
