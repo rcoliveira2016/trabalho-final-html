@@ -50,6 +50,7 @@ class PostControle {
 			move_uploaded_file($_FILES["imagem"]["tmp_name"], $_FILES["imagem"]["name"]);
 			$bin_string = file_get_contents($_FILES["imagem"]["name"]);	
 			$data['imagem'] = base64_encode($bin_string);
+			unlink($_FILES["imagem"]["name"]);
 		}else{
 			$data['imagem'] = $post->getImagem();
 		}
@@ -73,6 +74,7 @@ class PostControle {
 			move_uploaded_file($_FILES["imagem"]["tmp_name"], $_FILES["imagem"]["name"]);
 			$bin_string = file_get_contents($_FILES["imagem"]["name"]);	
 			$resquest['imagem'] = base64_encode($bin_string);
+			unlink($_FILES["imagem"]["name"]);
 			$post = $this->popularPost($resquest);	
 			PostRepositorio::getInstance()->Inserir($post);
 		}

@@ -65,3 +65,7 @@ a.navbar-brand img{
   background-color: #e8e8e8;
   border-radius: unset!important;
 }
+
+img.post-primary-img{
+  max-height: 250px!important;
+}
