@@ -25,7 +25,7 @@ $post = $controle->retorno;
 			<label for="imagem">Imagem</label>
 			<div class="input-group">
 				<div class="custom-file">
-					<input required  type="file" name="imagem" class="custom-file-input" id="imagem" aria-describedby="imagem">
+					<input type="file" name="imagem" class="custom-file-input" id="imagem" aria-describedby="imagem">
 					<label class="custom-file-label" for="imagem">selecione uma imagem</label>
 				</div>
 			</div>
@@ -33,14 +33,14 @@ $post = $controle->retorno;
         <div class="form-group">
             <label for="conteudo">Conteudo</label>
             <textarea maxlength=250 required class="form-control" id="conteudo"  name="conteudo" rows="18"><?php echo $post->getConteudo() ?></textarea>
-        </div>		
+        </div>
         <button type="submit" name="envio" class="btn btn-light border">Enter</button>
     </form>
 </div>
 
-<?php 
+<?php
 //$bundles_javaScripts[]='//cdn.ckeditor.com/4.11.1/basic/ckeditor.js';
 $bundles_javaScripts[]='./vendor/ckeditor/ckeditor.js';
 $bundles_javaScripts[]='./js/add-post.js';
-include_once('./php/views/end-page.php') 
+include_once('./php/views/end-page.php')
 ?>
