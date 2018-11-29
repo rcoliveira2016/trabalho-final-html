@@ -4,7 +4,9 @@ include_once('./php/views/start-page.php');
 $controle = new PostControle();
 $post = $controle->retorno;
 ?>
-<h1 class="mt-4">Cadastrar post</h1>
+<h1 class="mt-4">
+  <?php echo $post->getId()<1? "Cadastrar":"Editar"; ?>
+   post</h1>
 <hr>
 <div class="container mb-3 p-3 shadow-sm">
     <form enctype="multipart/form-data" method="<?php echo $controle->formMethod ?>"  >
