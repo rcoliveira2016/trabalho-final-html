@@ -11,8 +11,16 @@ else{
 }
 
 //html
-include_once('./php/views/start-page.php'); 
+include_once('./php/views/start-page.php');
 ?>
+<?php  if(isset($_POST['pesquisa'])):?>
+	<div class="my-4 col-md-12">
+		<p class="mb-0 lead">
+			<b>Termo pesquisado:</b>
+			<?php echo $_POST['pesquisa']; ?>
+		</p>
+	</div>
+<?php  endif;?>
 <div class="album my-4">
 	<div class="container">
 		<div class="row">
