@@ -6,7 +6,7 @@ SET time_zone = "+00:00";
 
 
 CREATE Database trabalho;
-
+use trabalho;
 CREATE TABLE `post` (
   `id` bigint(20) NOT NULL,
   `titulo` varchar(200) NOT NULL,
